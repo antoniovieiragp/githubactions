@@ -20,6 +20,10 @@ jobs:
       - name: 🚚 Get latest code
         uses: actions/checkout@v3
 
+      # Debug: Verificar se a variável remote_path_main está definida
+      - name: 🧐 Debug Remote Path
+        run: echo "Remote Path: ${{ secrets.remote_path_main }}"
+
       # Fazer o deploy via SFTP
       - name: 📂 Sync files via SFTP
         uses: wlixcc/SFTP-Deploy-Action@v1.2.4
