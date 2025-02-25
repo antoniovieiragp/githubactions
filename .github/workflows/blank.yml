@@ -1,0 +1,32 @@
+#teste9
+name: 🚀 Deploy main branch
+
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: 🎉 Deploy to Production
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout do código
+      - name: 🚚 Get latest code
+        uses: actions/checkout@v3
+
+      # Fazer o deploy via SFTP
+      - name: 📂 Sync files via SFTP
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+        with:
+          server: ${{ secrets.ftp_host }}
+          username: ${{ secrets.ftp_user }}
+          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
+          remote_path: ${{ secrets.remote_path_main }}
+          port: ${{ secrets.ftp_port }}
+          sftp_only: false
