@@ -22,7 +22,7 @@ jobs:
 
       # Debug: Verificar se a variável remote_path_main está definida
       - name: 🧐 Debug Remote Path
-        run: echo "Remote Path: ${{ secrets.remote_path_main }}"
+        run: echo "Remote Path:" ${{ secrets.remote_path_main }}
 
       # Fazer o deploy via SFTP
       - name: 📂 Sync files via SFTP
